@@ -4,9 +4,17 @@ version = "0.1.0"
 description = ""
 authors = ["rajar <rajarajeshwarir2021@gmail.com>"]
 readme = "README.md"
+packages = [
+    { include = "src" },
+]
+
 
 [tool.poetry.dependencies]
 python = "^3.10"
+pandas = "^2.2.0"
+mlflow = "2.5.0"
+notebook = "^7.0.7"
+flask = "2.3.3"
 
 
 [build-system]
