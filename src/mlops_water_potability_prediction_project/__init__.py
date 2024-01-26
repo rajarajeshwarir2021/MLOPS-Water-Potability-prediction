@@ -6,7 +6,7 @@ LOG_DIRECTORY = "logs"
 LOGGING_STRING = "[%(asctime)s]: %(levelname)s: %(module)s: %(message)s]"
 
 LOG_FILE_PATH = os.path.join(LOG_DIRECTORY,"run_logs.log")
-os.makedirs(LOG_FILE_PATH, exist_ok=True)
+os.makedirs(LOG_DIRECTORY, exist_ok=True)
 
 
 logging.basicConfig(

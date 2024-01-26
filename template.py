@@ -6,7 +6,8 @@ PROJECT_NAME = "mlops_water_potability_prediction_project"
 FILES_TO_GENERATE = [
     ".github/workflows/.gitkeep",
     f"src/{PROJECT_NAME}/__init__.py",
-    f"src/{PROJECT_NAME}/components/__init__.py",
+    f"src/{PROJECT_NAME}/classes/__init__.py",
+    f"src/{PROJECT_NAME}/step/__init__.py",
     f"src/{PROJECT_NAME}/utils/__init__.py",
     f"src/{PROJECT_NAME}/utils/common.py",
     f"src/{PROJECT_NAME}/config/__init__.py",
