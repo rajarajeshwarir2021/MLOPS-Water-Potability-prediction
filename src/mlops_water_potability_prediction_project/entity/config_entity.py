@@ -31,6 +31,6 @@ class DataValidationConfig:
     - data_schema (dict): A dictionary representing the expected schema for the validation data.
     """
     root_dir: Path
-    unzip_data_path: Path
+    data_path: Path
     status_file: str
     data_schema: dict

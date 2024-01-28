@@ -1,6 +1,6 @@
 from src.mlops_water_potability_prediction_project import logger
 from src.mlops_water_potability_prediction_project.pipeline.stage_01_data_ingestion import DataIngestionTrainingPipeline
-from src.mlops_water_potability_prediction_project.pipeline.stage_02_data_validation import \
+from src.mlops_water_potability_prediction_project.pipeline.stage_03_data_validation import \
     DataValidationTrainingPipeline
 
 # STAGE_NAME = "DATA INGESTION"

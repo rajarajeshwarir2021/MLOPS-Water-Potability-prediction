@@ -34,7 +34,7 @@ class DataValidation:
         """
         try:
             validation_status = None
-            dataframe = pd.read_csv(self.config.unzip_data_path)
+            dataframe = pd.read_csv(self.config.data_path)
             all_columns = list(dataframe.columns)
             data_schema_keys = self.config.data_schema.keys()
 
