@@ -17,3 +17,20 @@ class DataIngestionConfig:
     root_dir: Path
     unzip_dir: Path
     zip_data_path: Path
+
+
+@dataclass(frozen=True)
+class DataValidationConfig:
+    """
+    Configuration class for data validation.
+
+    Attributes:
+    - root_dir (Path): The root directory where data validation will be performed.
+    - unzip_data_path (Path): The path where unzipped data will be stored for validation.
+    - status_file (str): The file containing status information of the validation process.
+    - data_schema (dict): A dictionary representing the expected schema for the validation data.
+    """
+    root_dir: Path
+    unzip_data_path: Path
+    status_file: str
+    data_schema: dict
