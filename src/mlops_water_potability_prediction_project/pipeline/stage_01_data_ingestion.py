@@ -11,7 +11,7 @@ class DataIngestionTrainingPipeline:
 
     Methods:
     - __init__: Initializes a DataIngestionTrainingPipeline instance.
-    - main: Executes the main steps of the data ingestion training pipeline.
+    - ingest_data: Executes the data ingestion steps of the data ingestion training pipeline.
     """
 
     def __init__(self):
@@ -20,7 +20,7 @@ class DataIngestionTrainingPipeline:
         """
         pass
 
-    def main(self):
+    def ingest_data(self):
         """
         Executes the main steps of the data ingestion training pipeline.
         Retrieves configuration, performs data ingestion, downloads and extracts the zipfile.
@@ -43,7 +43,7 @@ class DataIngestionTrainingPipeline:
 if __name__ == '__main__':
     try:
         logger.info(f">>>>>> STAGE: {STAGE_NAME} started <<<<<<")
-        DataIngestionTrainingPipeline().main()
+        DataIngestionTrainingPipeline().ingest_data()
         logger.info(f">>>>>> STAGE: {STAGE_NAME} completed <<<<<<\n\nX==========X")
     except Exception as e:
         logger.error(f"Error during overall execution: {e}")
