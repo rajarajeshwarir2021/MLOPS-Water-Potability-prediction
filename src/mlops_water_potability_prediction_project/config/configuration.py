@@ -1,11 +1,11 @@
 from src.mlops_water_potability_prediction_project.constants import *
-from src.mlops_water_potability_prediction_project.entity.config_entity import DataIngestionConfig
+from src.mlops_water_potability_prediction_project.entity.config_entity import DataIngestionConfig, DataValidationConfig
 from src.mlops_water_potability_prediction_project.utilities.helpers import read_yaml, create_directories
 
 
 class ConfigurationManager:
     """
-    A class for managing configuration settings related to data ingestion.
+    A class for retrieving data ingestion, data validation configuration.
 
     Attributes:
     - config_filepath [Path]: The filepath for the main configuration file.
@@ -16,6 +16,7 @@ class ConfigurationManager:
     - __init__: Initializes the ConfigurationManager instance with default or provided filepaths,
                 reads YAML files, and creates necessary directories.
     - get_data_ingestion_config: Retrieves the data ingestion configuration from the main configuration.
+    - get_data_validation_config: Retrieves the data validation configuration from the main configuration.
     """
     def __init__(self, config_filepath=CONFIG_FILE_PATH, params_filepath=PARAMS_FILE_PATH, schema_filepath=SCHEMA_FILE_PATH):
         """
@@ -51,3 +52,24 @@ class ConfigurationManager:
         )
 
         return data_ingestion_config
+
+    def get_data_validation_config(self) -> DataValidationConfig:
+        """
+        Retrieves the data validation configuration from the main configuration.
+
+        Returns:
+        - DataValidationConfig: An instance of DataValidationConfig with the specified configuration.
+        """
+        config = self.config.data_validation
+        schema = self.schema.COLUMNS
+
+        create_directories([config.root_dir])
+
+        data_validation_config = DataValidationConfig(
+            root_dir=config.root_dir,
+            unzip_data_path=config.unzip_data_path,
+            status_file=config.status_file,
+            data_schema=schema
+        )
+
+        return data_validation_config
