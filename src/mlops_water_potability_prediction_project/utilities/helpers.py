@@ -12,7 +12,7 @@ from src.mlops_water_potability_prediction_project.classes.dataloadersaver impor
 
 
 @ensure_annotations
-def create_directories(directories_path_list: list, verbose=True) -> None:
+def create_directories(directories_path_list: list, verbose=True):
     """
     Create directories given a list of directories.
 
