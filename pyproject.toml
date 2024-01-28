@@ -26,6 +26,8 @@ types-pyyaml = "^6.0.12.12"
 flask-cors = "^4.0.0"
 scikit-learn = "^1.4.0"
 opendatasets = "^0.1.22"
+seaborn = "^0.13.2"
+plotly = "^5.18.0"
 
 
 [build-system]
