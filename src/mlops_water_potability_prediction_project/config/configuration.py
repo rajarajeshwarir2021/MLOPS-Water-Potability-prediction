@@ -1,11 +1,12 @@
 from src.mlops_water_potability_prediction_project.constants import *
-from src.mlops_water_potability_prediction_project.entity.config_entity import DataIngestionConfig, DataValidationConfig
+from src.mlops_water_potability_prediction_project.entity.config_entity import DataIngestionConfig, \
+    DataValidationConfig, DataTransformationConfig
 from src.mlops_water_potability_prediction_project.utilities.helpers import read_yaml, create_directories
 
 
 class ConfigurationManager:
     """
-    A class for retrieving data ingestion, data validation configuration.
+    A class for retrieving data ingestion, data validation, data transformation configuration.
 
     Attributes:
     - config_filepath [Path]: The filepath for the main configuration file.
@@ -17,6 +18,7 @@ class ConfigurationManager:
                 reads YAML files, and creates necessary directories.
     - get_data_ingestion_config: Retrieves the data ingestion configuration from the main configuration.
     - get_data_validation_config: Retrieves the data validation configuration from the main configuration.
+    - get_data_transformation_config: Retrieves data transformation configuration from the main configuration.
     """
     def __init__(self, config_filepath=CONFIG_FILE_PATH, params_filepath=PARAMS_FILE_PATH, schema_filepath=SCHEMA_FILE_PATH):
         """
@@ -73,3 +75,21 @@ class ConfigurationManager:
         )
 
         return data_validation_config
+
+    def get_data_transformation_config(self) -> DataTransformationConfig:
+        """
+        Retrieves the data transformation configuration.
+
+        Returns:
+        - DataTransformationConfig: An instance of DataTransformationConfig based on the stored configuration data.
+        """
+        config = self.config.data_transformation
+
+        create_directories([config.root_dir])
+
+        data_transformation_config = DataTransformationConfig(
+            root_dir=config.root_dir,
+            data_path=config.data_path
+        )
+
+        return data_transformation_config
