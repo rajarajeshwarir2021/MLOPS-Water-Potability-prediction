@@ -42,8 +42,10 @@ class DataTransformationConfig:
     Configuration class for data transformation.
 
     Attributes:
-        root_dir (Path): The root directory for data transformation.
-        data_path (Path): The path to the data for transformation.
+        - root_dir (Path): The root directory for data transformation.
+        - data_path (Path): The path to the data for transformation.
+        - status_file (str): The file containing status information of the validation process.
     """
     root_dir: Path
     data_path: Path
+    status_file: Path
