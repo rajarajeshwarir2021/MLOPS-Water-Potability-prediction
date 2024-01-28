@@ -50,9 +50,9 @@ class DataValidation:
                 validation_status = True
 
             with open(self.config.status_file, 'w') as f:
-                f.write(f"Validation status: {str(validation_status).upper()}")
+                f.write(f"Validation status: {str(validation_status)}")
 
-            logger.info(f"Validation status: {str(validation_status).upper()}")
+            logger.info(f"Validation status: {str(validation_status)}")
             return validation_status
         except Exception as e:
             logger.error(f"Error during data validation: {e}")
