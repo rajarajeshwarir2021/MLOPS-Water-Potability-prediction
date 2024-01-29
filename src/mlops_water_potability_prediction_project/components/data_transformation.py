@@ -1,4 +1,6 @@
 import os
+
+import joblib
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
@@ -73,6 +75,10 @@ class DataTransformation:
             self.test = pd.DataFrame(test_array, columns=list(self.test.columns))
 
             logger.info("Feature scaled the train and test sets")
+
+            joblib.dump(sc, os.path.join(self.config.root_dir, self.config.feature_scaler))
+            logger.info("Saved the Feature scaler")
+
         except Exception as e:
             raise e
 

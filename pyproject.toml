@@ -28,6 +28,7 @@ scikit-learn = "^1.4.0"
 opendatasets = "^0.1.22"
 seaborn = "^0.13.2"
 plotly = "^5.18.0"
+ipywidgets = "^8.1.1"
 
 
 [build-system]

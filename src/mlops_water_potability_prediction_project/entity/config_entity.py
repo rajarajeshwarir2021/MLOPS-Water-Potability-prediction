@@ -24,6 +24,26 @@ class DataIngestionConfig:
 
 
 @dataclass(frozen=True)
+class DataCleaningConfig:
+    """
+    Configuration class for data cleaning.
+
+    Attributes:
+    - root_dir (Path): The root directory where the data is located.
+    - unclean_data_path (Path): The path to the unclean/raw data file.
+    - clean_data_path (Path): The path where the cleaned data will be saved.
+
+    Note:
+        This class is decorated with @dataclass, making instances immutable (frozen).
+        Immutable instances are useful for configuration settings to prevent accidental modification.
+    """
+
+    root_dir: Path
+    unclean_data_path: Path
+    clean_data_path: Path
+
+
+@dataclass(frozen=True)
 class DataValidationConfig:
     """
     Configuration class for data validation.
@@ -61,23 +81,6 @@ class DataTransformationConfig:
     root_dir: Path
     data_path: Path
     status_file: Path
+    feature_scaler: Path
 
 
-@dataclass(frozen=True)
-class DataCleaningConfig:
-    """
-    Configuration class for data cleaning.
-
-    Attributes:
-    - root_dir (Path): The root directory where the data is located.
-    - unclean_data_path (Path): The path to the unclean/raw data file.
-    - clean_data_path (Path): The path where the cleaned data will be saved.
-
-    Note:
-        This class is decorated with @dataclass, making instances immutable (frozen).
-        Immutable instances are useful for configuration settings to prevent accidental modification.
-    """
-
-    root_dir: Path
-    unclean_data_path: Path
-    clean_data_path: Path

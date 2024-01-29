@@ -20,6 +20,7 @@ data_transformation:
   root_dir: artifacts/data_transformation
   data_path: artifacts/data_cleaning/water_potability_dataset.csv
   status_file: artifacts/data_validation/status.txt
+  feature_scaler_file_name: feature_scaler.joblib
 
 model_trainer:
   root_dir: artifacts/model_trainer

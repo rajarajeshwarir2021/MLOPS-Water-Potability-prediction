@@ -55,6 +55,31 @@ class ConfigurationManager:
 
         return data_ingestion_config
 
+    def get_data_cleaning_config(self) -> DataCleaningConfig:
+        """
+        Retrieve the data cleaning configuration.
+
+        Returns:
+        - DataCleaningConfig: An instance of DataCleaningConfig containing the configuration settings.
+
+        Notes:
+            The method uses the data cleaning configuration from the overall application configuration.
+            It creates the necessary directories specified in the configuration.
+        """
+        config = self.config.data_cleaning
+
+        # Ensure the root directory exists
+        create_directories([config.root_dir])
+
+        # Create and return a DataCleaningConfig instance
+        data_cleaning_config = DataCleaningConfig(
+            root_dir=config.root_dir,
+            unclean_data_path=config.unclean_data_path,
+            clean_data_path=config.clean_data_path
+        )
+
+        return data_cleaning_config
+
     def get_data_validation_config(self) -> DataValidationConfig:
         """
         Retrieves the data validation configuration from the main configuration.
@@ -90,32 +115,9 @@ class ConfigurationManager:
         data_transformation_config = DataTransformationConfig(
             root_dir=config.root_dir,
             data_path=config.data_path,
-            status_file=config.status_file
+            status_file=config.status_file,
+            feature_scaler=config.feature_scaler
         )
 
         return data_transformation_config
 
-    def get_data_cleaning_config(self) -> DataCleaningConfig:
-        """
-        Retrieve the data cleaning configuration.
-
-        Returns:
-        - DataCleaningConfig: An instance of DataCleaningConfig containing the configuration settings.
-
-        Notes:
-            The method uses the data cleaning configuration from the overall application configuration.
-            It creates the necessary directories specified in the configuration.
-        """
-        config = self.config.data_cleaning
-
-        # Ensure the root directory exists
-        create_directories([config.root_dir])
-
-        # Create and return a DataCleaningConfig instance
-        data_cleaning_config = DataCleaningConfig(
-            root_dir=config.root_dir,
-            unclean_data_path=config.unclean_data_path,
-            clean_data_path=config.clean_data_path
-        )
-
-        return data_cleaning_config
