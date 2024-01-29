@@ -47,7 +47,7 @@ def get_file_size(file_path: Path) -> str:
 
 
 @ensure_annotations
-def load_binary(file_path: Path, verbose: True) -> Any:
+def load_binary(file_path: Path, verbose: bool = True) -> Any:
     """
     Load a Binary file.
 
@@ -58,7 +58,7 @@ def load_binary(file_path: Path, verbose: True) -> Any:
         Any: File content or None
     """
     try:
-        content = JobLibDataLoaderSaver.load(file_path)
+        content = JobLibDataLoaderSaver().load(file_path)
         if verbose:
             logger.info(f"Binary file loaded from: {file_path}")
         return content
@@ -81,7 +81,7 @@ def save_binary(file_path: Path, data: Any, verbose=True) -> None:
         None
     """
     try:
-        JobLibDataLoaderSaver.save(file_path, data)
+        JobLibDataLoaderSaver().save(file_path, data)
         if verbose:
             logger.info(f"Binary file saved at: {file_path}")
     except Exception as e:
@@ -90,7 +90,7 @@ def save_binary(file_path: Path, data: Any, verbose=True) -> None:
 
 
 @ensure_annotations
-def load_json(file_path: Path, verbose: True) -> Any:
+def load_json(file_path: Path, verbose: bool = True) -> Any:
     """
     Load a JSON file.
 
@@ -101,7 +101,7 @@ def load_json(file_path: Path, verbose: True) -> Any:
         Any: File content ConfigBox or None
     """
     try:
-        content = JSONDataLoaderSaver.load(file_path)
+        content = JSONDataLoaderSaver().load(file_path)
         if verbose:
             logger.info(f"JSON file loaded from: {file_path}")
         return ConfigBox(content)
@@ -112,7 +112,7 @@ def load_json(file_path: Path, verbose: True) -> Any:
 
 
 @ensure_annotations
-def save_json(file_path: Path, data: dict, verbose: True) -> None:
+def save_json(file_path: Path, data: dict, verbose=True):
     """
     Save a JSON file.
 
@@ -124,7 +124,7 @@ def save_json(file_path: Path, data: dict, verbose: True) -> None:
         None
     """
     try:
-        JSONDataLoaderSaver.save(file_path, data)
+        JSONDataLoaderSaver().save(file_path, data)
         if verbose:
             logger.info(f"JSON file saved at: {file_path}")
     except Exception as e:

@@ -1,4 +1,4 @@
 CatBoost:
-  iterations: 50
+  iterations: 100
   learning_rate: 0.5
   random_seed: 42
