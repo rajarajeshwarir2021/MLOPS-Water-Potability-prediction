@@ -112,3 +112,30 @@ class ModelTrainerConfig:
     random_seed: int
     custom_loss: list
     target_column: str
+
+
+@dataclass(frozen=True)
+class ModelEvaluationConfig:
+    """
+    Configuration class for model evaluation.
+
+    Attributes:
+    - root_dir (Path): The root directory where the model evaluation data is located.
+    - test_data_path (Path): The path to the testing data file.
+    - model_path (Path): The path to the trained model file.
+    - metric_file_name (str): The name of the file to save the evaluation metrics.
+    - parameters (dict): Additional parameters for model evaluation.
+    - target_column (str): The name of the target column in the dataset.
+    - mlflow_uri (str): The URI for MLflow tracking (optional).
+
+    Note:
+        This class is decorated with @dataclass, making instances immutable (frozen).
+        Immutable instances are useful for configuration settings to prevent accidental modification.
+    """
+    root_dir: Path
+    test_data_path: Path
+    model_path: Path
+    metric_file_name: str
+    parameters: dict
+    target_column: str
+    mlflow_uri: str
