@@ -3,6 +3,8 @@ import os
 import pandas as pd
 from catboost import CatBoostClassifier
 from src.mlops_water_potability_prediction_project import logger
+from src.mlops_water_potability_prediction_project.entity.config_entity import ModelTrainerConfig
+
 
 class ModelTrainer:
     """

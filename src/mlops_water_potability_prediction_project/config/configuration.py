@@ -116,7 +116,7 @@ class ConfigurationManager:
             root_dir=config.root_dir,
             data_path=config.data_path,
             status_file=config.status_file,
-            feature_scaler=config.feature_scaler
+            feature_scaler=config.feature_scaler_file_name
         )
 
         return data_transformation_config

@@ -5,9 +5,14 @@ from src.mlops_water_potability_prediction_project.pipeline.stage_03_data_valida
     DataValidationTrainingPipeline
 from src.mlops_water_potability_prediction_project.pipeline.stage_04_data_transformation import \
     DataTransformationTrainingPipeline
+from src.mlops_water_potability_prediction_project.pipeline.stage_05_model_trainer import ModelTrainerTrainingPipeline
 
 
 def main():
+    """
+    The main function runs different stages of the training pipeline
+    Returns: None
+    """
 
     STAGE_NAME = "DATA INGESTION"
     try:
@@ -40,6 +45,15 @@ def main():
     try:
         logger.info(f">>>>>> STAGE: {STAGE_NAME} started <<<<<<")
         DataTransformationTrainingPipeline().transform_data()
+        logger.info(f">>>>>> STAGE: {STAGE_NAME} completed <<<<<<\n\nX==========X")
+    except Exception as e:
+        logger.error(f"Error during overall execution: {e}")
+        raise e
+
+    STAGE_NAME = "MODEL TRAINER"
+    try:
+        logger.info(f">>>>>> STAGE: {STAGE_NAME} started <<<<<<")
+        ModelTrainerTrainingPipeline().train_model()
         logger.info(f">>>>>> STAGE: {STAGE_NAME} completed <<<<<<\n\nX==========X")
     except Exception as e:
         logger.error(f"Error during overall execution: {e}")
