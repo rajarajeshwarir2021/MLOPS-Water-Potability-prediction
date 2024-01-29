@@ -1,6 +1,6 @@
 from src.mlops_water_potability_prediction_project.constants import *
 from src.mlops_water_potability_prediction_project.entity.config_entity import DataIngestionConfig, \
-    DataValidationConfig, DataTransformationConfig, DataCleaningConfig, ModelTrainerConfig
+    DataValidationConfig, DataTransformationConfig, DataCleaningConfig, ModelTrainerConfig, ModelEvaluationConfig
 from src.mlops_water_potability_prediction_project.utilities.helpers import read_yaml, create_directories
 
 
@@ -152,3 +152,35 @@ class ConfigurationManager:
         )
 
         return model_trainer_config
+
+    def get_model_evaluation_config(self) -> ModelEvaluationConfig:
+        """
+        Retrieve the model evaluation configuration.
+
+        Returns:
+        - ModelEvaluationConfig: An instance of ModelEvaluationConfig containing the configuration settings.
+
+        Notes:
+            The method uses the model evaluation configuration, CatBoost parameters, and the target column schema.
+            It creates the necessary directories specified in the configuration.
+            The MLflow URI is set to a default value, but it can be customized based on your MLflow setup.
+        """
+        config = self.config.model_evaluation
+        params = self.params.CatBoost
+        schema = self.schema.TARGET_COLUMN
+
+        # Ensure the root directory exists
+        create_directories([config.root_dir])
+
+        # Create and return a ModelEvaluationConfig instance
+        model_evaluation_config = ModelEvaluationConfig(
+            root_dir=config.root_dir,
+            test_data_path=config.test_data_path,
+            model_path=config.model_path,
+            metric_file_name=config.metric_file_name,
+            parameters=params,
+            target_column=schema.name,
+            mlflow_uri="https://dagshub.com/rajarajeshwarir2021/MLOPS-Water-Potability-prediction.mlflow"
+        )
+
+        return model_evaluation_config
