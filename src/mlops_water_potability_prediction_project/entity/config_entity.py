@@ -139,3 +139,18 @@ class ModelEvaluationConfig:
     parameters: dict
     target_column: str
     mlflow_uri: str
+
+
+@dataclass(frozen=True)
+class ModelPredictionConfig:
+    """
+    Configuration class for model prediction.
+
+    Attributes:
+        model_path (Path): The path to the trained model file.
+
+    Note:
+        This class is decorated with @dataclass, making instances immutable (frozen).
+        Immutable instances are useful for configuration settings to prevent accidental modification.
+    """
+    model_path: Path
