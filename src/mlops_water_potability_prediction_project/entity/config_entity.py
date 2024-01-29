@@ -106,7 +106,6 @@ class ModelTrainerConfig:
     """
     root_dir: Path
     train_data_path: Path
-    test_data_path: Path
     model_file_name: str
     iterations: int
     learning_rate: float

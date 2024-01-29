@@ -39,13 +39,10 @@ class ModelTrainer:
         try:
             # Read training and testing data
             train_df = pd.read_csv(self.config.train_data_path)
-            test_df = pd.read_csv(self.config.test_data_path)
 
             # Extract features and target variables
             X_train = train_df.drop([self.config.target_column], axis=1)
-            X_test = test_df.drop([self.config.target_column], axis=1)
             y_train = train_df[[self.config.target_column]]
-            y_test = test_df[[self.config.target_column]]
 
             # Initialize and train CatBoostClassifier
             classifier = CatBoostClassifier(iterations=self.config.iterations,
