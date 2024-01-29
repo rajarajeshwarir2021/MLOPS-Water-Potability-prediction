@@ -1,6 +1,7 @@
 from src.mlops_water_potability_prediction_project.constants import *
 from src.mlops_water_potability_prediction_project.entity.config_entity import DataIngestionConfig, \
-    DataValidationConfig, DataTransformationConfig, DataCleaningConfig, ModelTrainerConfig, ModelEvaluationConfig
+    DataValidationConfig, DataTransformationConfig, DataCleaningConfig, ModelTrainerConfig, ModelEvaluationConfig, \
+    ModelPredictionConfig
 from src.mlops_water_potability_prediction_project.utilities.helpers import read_yaml, create_directories
 
 
@@ -184,3 +185,19 @@ class ConfigurationManager:
         )
 
         return model_evaluation_config
+
+    def get_model_prediction_config(self) -> ModelPredictionConfig:
+        """
+        Retrieve the model prediction configuration.
+
+        Returns:
+        - ModelPredictionConfig: An instance of ModelPredictionConfig containing the configuration settings.
+        """
+        config = self.config.model_prediction
+
+        # Create and return a ModelPredictionConfig instance
+        model_prediction_config = ModelPredictionConfig(
+            model_path=config.model_path,
+        )
+
+        return model_prediction_config

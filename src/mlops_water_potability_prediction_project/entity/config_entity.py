@@ -147,7 +147,7 @@ class ModelPredictionConfig:
     Configuration class for model prediction.
 
     Attributes:
-        model_path (Path): The path to the trained model file.
+    - model_path (Path): The path to the trained model file.
 
     Note:
         This class is decorated with @dataclass, making instances immutable (frozen).
