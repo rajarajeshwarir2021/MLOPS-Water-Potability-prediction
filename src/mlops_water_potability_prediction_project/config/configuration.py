@@ -1,6 +1,6 @@
 from src.mlops_water_potability_prediction_project.constants import *
 from src.mlops_water_potability_prediction_project.entity.config_entity import DataIngestionConfig, \
-    DataValidationConfig, DataTransformationConfig
+    DataValidationConfig, DataTransformationConfig, DataCleaningConfig
 from src.mlops_water_potability_prediction_project.utilities.helpers import read_yaml, create_directories
 
 
@@ -94,3 +94,28 @@ class ConfigurationManager:
         )
 
         return data_transformation_config
+
+    def get_data_cleaning_config(self) -> DataCleaningConfig:
+        """
+        Retrieve the data cleaning configuration.
+
+        Returns:
+        - DataCleaningConfig: An instance of DataCleaningConfig containing the configuration settings.
+
+        Notes:
+            The method uses the data cleaning configuration from the overall application configuration.
+            It creates the necessary directories specified in the configuration.
+        """
+        config = self.config.data_cleaning
+
+        # Ensure the root directory exists
+        create_directories([config.root_dir])
+
+        # Create and return a DataCleaningConfig instance
+        data_cleaning_config = DataCleaningConfig(
+            root_dir=config.root_dir,
+            unclean_data_path=config.unclean_data_path,
+            clean_data_path=config.clean_data_path
+        )
+
+        return data_cleaning_config
