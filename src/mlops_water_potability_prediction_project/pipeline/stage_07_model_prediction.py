@@ -53,7 +53,7 @@ class ModelPredictionPipeline:
 if __name__ == '__main__':
     try:
         logger.info(f">>>>>> STAGE: {STAGE_NAME} started <<<<<<")
-        ModelPredictionPipeline().evaluate_model()
+        ModelPredictionPipeline().predict_model()
         logger.info(f">>>>>> STAGE: {STAGE_NAME} completed <<<<<<\n\nX==========X")
     except Exception as e:
         logger.error(f"Error during overall execution: {e}")

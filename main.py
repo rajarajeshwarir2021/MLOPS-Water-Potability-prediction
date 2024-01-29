@@ -8,8 +8,10 @@ from src.mlops_water_potability_prediction_project.pipeline.stage_04_data_transf
 from src.mlops_water_potability_prediction_project.pipeline.stage_05_model_trainer import ModelTrainerTrainingPipeline
 from src.mlops_water_potability_prediction_project.pipeline.stage_06_model_evaluation import \
     ModelEvaluationTrainingPipeline
+from src.mlops_water_potability_prediction_project.pipeline.stage_07_model_prediction import ModelPredictionPipeline
 
 
+SAMPLE_DATA = [[-0.3178266699547379,-0.091211066334705,-0.8620216614125349,-0.6109023585675367,-0.45494327621466607,-1.0186105292775014,0.9252077219311549,-0.8142465077043499,-1.5108829669361032]]
 def main():
     """
     The main function runs different stages of the training pipeline
@@ -65,6 +67,15 @@ def main():
     try:
         logger.info(f">>>>>> STAGE: {STAGE_NAME} started <<<<<<")
         ModelEvaluationTrainingPipeline().evaluate_model()
+        logger.info(f">>>>>> STAGE: {STAGE_NAME} completed <<<<<<\n\nX==========X")
+    except Exception as e:
+        logger.error(f"Error during overall execution: {e}")
+        raise e
+
+    STAGE_NAME = "MODEL PREDICTION"
+    try:
+        logger.info(f">>>>>> STAGE: {STAGE_NAME} started <<<<<<")
+        ModelPredictionPipeline().predict_model(SAMPLE_DATA)
         logger.info(f">>>>>> STAGE: {STAGE_NAME} completed <<<<<<\n\nX==========X")
     except Exception as e:
         logger.error(f"Error during overall execution: {e}")
