@@ -6,14 +6,19 @@ data_ingestion:
   unzip_dir: artifacts/data_ingestion
   zip_data_path: artifacts/data_ingestion/water_potability_dataset.zip
 
+data_cleaning:
+  root_dir: artifacts/data_cleaning
+  unclean_data_path: artifacts/data_ingestion/water_potability_dataset.csv
+  clean_data_path: artifacts/data_cleaning/water_potability_dataset.csv
+
 data_validation:
   root_dir: artifacts/data_validation
-  data_path: artifacts/data_ingestion/water_potability_dataset.csv
+  data_path: artifacts/data_cleaning/water_potability_dataset.csv
   status_file: artifacts/data_validation/status.txt
 
 data_transformation:
   root_dir: artifacts/data_transformation
-  data_path: artifacts/data_ingestion/water_potability_dataset.csv
+  data_path: artifacts/data_cleaning/water_potability_dataset.csv
   status_file: artifacts/data_validation/status.txt
 
 model_trainer:
