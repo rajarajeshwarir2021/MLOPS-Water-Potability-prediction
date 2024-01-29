@@ -84,3 +84,32 @@ class DataTransformationConfig:
     feature_scaler: Path
 
 
+@dataclass(frozen=True)
+class ModelTrainerConfig:
+    """
+    Configuration class for model training.
+
+    Attributes:
+    - root_dir (Path): The root directory where the model training data is located.
+    - train_data_path (Path): The path to the training data file.
+    - test_data_path (Path): The path to the testing data file.
+    - model_file_name (str): The name of the file to save the trained model.
+    - iterations (int): The number of iterations for model training.
+    - learning_rate (float): The learning rate for the model training.
+    - random_seed (int): The random seed for reproducibility.
+    - custom_loss (list): A list of custom loss functions to be used during training.
+    - target_column (str): The name of the target column in the dataset.
+
+    Note:
+        This class is decorated with @dataclass, making instances immutable (frozen).
+        Immutable instances are useful for configuration settings to prevent accidental modification.
+    """
+    root_dir: Path
+    train_data_path: Path
+    test_data_path: Path
+    model_file_name: str
+    iterations: int
+    learning_rate: float
+    random_seed: int
+    custom_loss: list
+    target_column: str
