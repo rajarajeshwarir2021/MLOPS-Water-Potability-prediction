@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/cd1c9f575a074f20afbcb07b5c0617e8/artifacts
+end_time: 1706537953828
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: cd1c9f575a074f20afbcb07b5c0617e8
+run_name: omniscient-trout-696
+run_uuid: cd1c9f575a074f20afbcb07b5c0617e8
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1706537951346
+status: 3
+tags: []
+user_id: rajar

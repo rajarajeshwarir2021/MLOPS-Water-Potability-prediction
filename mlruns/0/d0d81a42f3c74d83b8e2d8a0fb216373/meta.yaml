@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/d0d81a42f3c74d83b8e2d8a0fb216373/artifacts
+end_time: 1706537538619
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: d0d81a42f3c74d83b8e2d8a0fb216373
+run_name: defiant-eel-249
+run_uuid: d0d81a42f3c74d83b8e2d8a0fb216373
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1706537536136
+status: 3
+tags: []
+user_id: rajar

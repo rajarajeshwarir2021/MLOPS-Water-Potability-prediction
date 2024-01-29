@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/43a71bd2abfb4676b9875467b2cb57f4/artifacts
+end_time: 1706539518795
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 43a71bd2abfb4676b9875467b2cb57f4
+run_name: luxuriant-koi-605
+run_uuid: 43a71bd2abfb4676b9875467b2cb57f4
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1706539518728
+status: 3
+tags: []
+user_id: rajar

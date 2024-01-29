@@ -1,17 +1,20 @@
-from pathlib import Path
-
 import joblib
 import mlflow
 import mlflow.sklearn
 import numpy as np
 import os
 import pandas as pd
+from pathlib import Path
 from sklearn.metrics import accuracy_score, confusion_matrix
 from urllib.parse import urlparse
 
 from src.mlops_water_potability_prediction_project import logger
 from src.mlops_water_potability_prediction_project.entity.config_entity import ModelEvaluationConfig
 from src.mlops_water_potability_prediction_project.utilities.helpers import save_json
+
+os.environ["MLFLOW_TRACKING_URI"]="https://dagshub.com/rajarajeshwarir2021/MLOPS-Water-Potability-prediction.mlflow"
+os.environ["MLFLOW_TRACKING_USERNAME"]="rajarajeshwarir2021"
+os.environ["MLFLOW_TRACKING_PASSWORD"]="9bcd728f7628e9db2e294588d97d9589df5ea9b1"
 
 
 class ModelEvaluation:
@@ -53,7 +56,7 @@ class ModelEvaluation:
             X_test = test_df.drop([self.config.target_column], axis=1)
             y_test = test_df[[self.config.target_column]]
 
-            # Configure MLflow tracking
+            # Configure Dagshub and MLflow tracking
             mlflow.set_registry_uri(self.config.mlflow_uri)
             tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
 
@@ -77,14 +80,20 @@ class ModelEvaluation:
                 save_json(metric_file_path, score)
 
                 # Log parameters and metrics with MLflow
-                mlflow.log_params(self.config.parameters)
-                mlflow.log_metrics(score)
+                mlflow.log_param("Iteration", self.config.parameters.iterations)
+                mlflow.log_param("Learning_rate", self.config.parameters.learning_rate)
+                mlflow.log_param("Random_seed", self.config.parameters.random_seed)
+                mlflow.log_metric("Accuracy", accuracy)
+                mlflow.log_metric("True_Positive", int(conf_matrix[0][0]))
+                mlflow.log_metric("True_Negative", int(conf_matrix[1][1]))
+                mlflow.log_metric("False_Positive", int(conf_matrix[0][1]))
+                mlflow.log_metric("False_Negative", int(conf_matrix[1][0]))
 
             # Log the model with MLflow
             if tracking_url_type_store != "file":
                 mlflow.sklearn.log_model(model, "model", registered_model_name="CatBoostModel")
             else:
-                mlflow.sklearn.log_model(model, "model")
+                mlflow.sklearn.log_model(model, "model", registered_model_name="CatBoostModel")
 
             logger.info("Evaluated and logged metrics with MLflow")
 

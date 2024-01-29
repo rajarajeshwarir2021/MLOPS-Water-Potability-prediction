@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/bd34c5df09ee4d2aa9c33c16d48ed47c/artifacts
+end_time: 1706539521452
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: bd34c5df09ee4d2aa9c33c16d48ed47c
+run_name: skittish-lamb-732
+run_uuid: bd34c5df09ee4d2aa9c33c16d48ed47c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1706539518807
+status: 3
+tags: []
+user_id: rajar

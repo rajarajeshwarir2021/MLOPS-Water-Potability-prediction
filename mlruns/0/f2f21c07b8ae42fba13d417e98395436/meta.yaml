@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/f2f21c07b8ae42fba13d417e98395436/artifacts
+end_time: 1706537536125
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: f2f21c07b8ae42fba13d417e98395436
+run_name: dapper-lynx-754
+run_uuid: f2f21c07b8ae42fba13d417e98395436
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1706537536053
+status: 3
+tags: []
+user_id: rajar
