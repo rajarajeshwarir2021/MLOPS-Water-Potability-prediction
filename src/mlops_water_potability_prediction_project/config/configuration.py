@@ -1,6 +1,6 @@
 from src.mlops_water_potability_prediction_project.constants import *
 from src.mlops_water_potability_prediction_project.entity.config_entity import DataIngestionConfig, \
-    DataValidationConfig, DataTransformationConfig, DataCleaningConfig
+    DataValidationConfig, DataTransformationConfig, DataCleaningConfig, ModelTrainerConfig
 from src.mlops_water_potability_prediction_project.utilities.helpers import read_yaml, create_directories
 
 
@@ -121,3 +121,35 @@ class ConfigurationManager:
 
         return data_transformation_config
 
+    def get_model_trainer_config(self) -> ModelTrainerConfig:
+        """
+        Retrieve the model trainer configuration.
+
+        Returns:
+        - ModelTrainerConfig: An instance of ModelTrainerConfig containing the configuration settings.
+
+        Notes:
+            The method uses the model trainer configuration, CatBoost parameters, and the target column schema.
+            It creates the necessary directories specified in the configuration.
+        """
+        config = self.config.model_trainer
+        params = self.params.CatBoost
+        schema = self.schema.TARGET_COLUMN
+
+        # Ensure the root directory exists
+        create_directories([config.root_dir])
+
+        # Create and return a ModelTrainerConfig instance
+        model_trainer_config = ModelTrainerConfig(
+            root_dir=config.root_dir,
+            train_data_path=config.train_data_path,
+            test_data_path=config.test_data_path,
+            model_file_name=config.model_file_name,
+            iterations=params.iterations,
+            learning_rate=params.learning_rate,
+            random_seed=params.random_seed,
+            custom_loss=['Accuracy', 'AUC'],
+            target_column=schema.name
+        )
+
+        return model_trainer_config
