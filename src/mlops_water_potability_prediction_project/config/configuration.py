@@ -1,7 +1,7 @@
 from src.mlops_water_potability_prediction_project.constants import *
 from src.mlops_water_potability_prediction_project.entity.config_entity import DataIngestionConfig, \
     DataValidationConfig, DataTransformationConfig, DataCleaningConfig, ModelTrainerConfig, ModelEvaluationConfig, \
-    ModelPredictionConfig
+    ModelPredictionConfig, ModelFrontendConfig
 from src.mlops_water_potability_prediction_project.utilities.helpers import read_yaml, create_directories
 
 
@@ -20,6 +20,8 @@ class ConfigurationManager:
     - get_data_ingestion_config: Retrieves the data ingestion configuration from the main configuration.
     - get_data_validation_config: Retrieves the data validation configuration from the main configuration.
     - get_data_transformation_config: Retrieves data transformation configuration from the main configuration.
+    - get_frontend_config: Retrieves the model frontend configuration from the main configuration.
+
     """
     def __init__(self, config_filepath=CONFIG_FILE_PATH, params_filepath=PARAMS_FILE_PATH, schema_filepath=SCHEMA_FILE_PATH):
         """
@@ -201,3 +203,22 @@ class ConfigurationManager:
         )
 
         return model_prediction_config
+
+    def get_frontend_config(self) -> ModelFrontendConfig:
+        """
+        Retrieves the model frontend configuration from the main configuration.
+
+        Returns:
+        - ModelFrontendConfig: An instance of ModelFrontendConfig with the specified configuration.
+        """
+        config = self.config.web_app
+
+        model_frontend_config = ModelFrontendConfig(
+            static_dir=config.static_dir,
+            template_dir=config.template_dir,
+            dataset_schema=config.dataset_schema,
+            feature_scaler=config.feature_scaler,
+            model_path=config.model_path
+        )
+
+        return model_frontend_config
