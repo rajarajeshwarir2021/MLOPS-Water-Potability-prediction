@@ -35,3 +35,7 @@ model_evaluation:
 
 model_prediction:
   model_path: artifacts/model_trainer/model.joblib
+
+web_app:
+  static_dir: web_app/static
+  template_dir: web_app/templates
