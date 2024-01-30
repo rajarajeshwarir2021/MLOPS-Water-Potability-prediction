@@ -154,3 +154,23 @@ class ModelPredictionConfig:
         Immutable instances are useful for configuration settings to prevent accidental modification.
     """
     model_path: Path
+
+
+@dataclass(frozen=True)
+class ModelFrontendConfig:
+    """
+    Configuration class for the model frontend.
+
+    Attributes:
+    - static_dir (Path): The directory containing static files for the frontend.
+    - template_dir (Path): The directory containing template files for the frontend.
+    - dataset_schema (Path): The path to the dataset schema used by the model frontend.
+    - feature_scaler (Path): The path to the feature scaler file used by the model frontend.
+    - model_path (Path): The path to the trained machine learning model used by the model frontend.
+    """
+
+    static_dir: Path
+    template_dir: Path
+    dataset_schema: Path
+    feature_scaler: Path
+    model_path: Path
