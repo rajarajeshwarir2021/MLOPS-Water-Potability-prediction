@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, render_template, request, jsonify
 
 from src.mlops_water_potability_prediction_project.components.frontend import FrontendPrediction
@@ -28,6 +30,18 @@ app = Flask(__name__, static_folder=static_dir, template_folder=templates_dir)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    """
+    Handles requests to the main page.
+
+    If the request method is POST, it attempts to make a prediction using the submitted form data.
+    If successful, the prediction result is rendered on the 'index.html' page.
+    If there is an error, an error message is rendered on the 'error.html' page.
+
+    If the request method is GET, renders the 'index.html' page.
+
+    Returns:
+    - str: Rendered HTML content.
+    """
     if request.method == 'POST':
         try:
             if request.form:
@@ -42,6 +56,20 @@ def index():
             return render_template('error.html', error=error_message)
     else:
         return render_template('index.html')
+
+
+@app.route('/train', methods=['GET'])
+def train_model():
+    """
+    Handles requests to trigger the model training process.
+
+    Executes the 'main.py' script to train the machine learning model.
+
+    Returns:
+    - str: A message indicating the success of the training process.
+    """
+    os.system("python main.py")
+    return "Training Successful!"
 
 
 if __name__ == '__main__':
