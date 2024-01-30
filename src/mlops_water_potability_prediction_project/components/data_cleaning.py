@@ -1,3 +1,5 @@
+import os.path
+
 import pandas as pd
 from src.mlops_water_potability_prediction_project import logger
 from src.mlops_water_potability_prediction_project.entity.config_entity import DataCleaningConfig
@@ -42,6 +44,10 @@ class DataCleaning:
 
             # Save the cleaned data
             dataframe.to_csv(self.config.clean_data_path, index=False)
+
+            # Save the cleaned data schema
+            overview = dataframe.describe()
+            overview.loc[["min", "max"]].to_json(os.path.join(self.config.root_dir, "dataset_schema.json"))
 
             # Log information about the cleaning process
             logger.info("Cleaned the dataset")

@@ -39,3 +39,6 @@ model_prediction:
 web_app:
   static_dir: web_app/static
   template_dir: web_app/templates
+  dataset_schema: artifacts/data_cleaning/dataset_schema.json
+  feature_scaler: artifacts/data_transformation/feature_scaler.joblib
+  model_path: artifacts/model_trainer/model.joblib
