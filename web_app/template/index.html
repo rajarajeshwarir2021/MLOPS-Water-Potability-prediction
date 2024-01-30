@@ -9,7 +9,9 @@ Water Potability
 {% block body %}
     <!-- Nav bar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="/"> Water Potability Prediction </a>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/"> Water Potability Prediction </a>
+        </div>
     </nav>
 
     <br><br>
@@ -19,68 +21,70 @@ Water Potability
         <form action="/" method="POST">
 
             <!-- Input block-->
-            <div class="form-group" style="margin-left:50px; color:#455A64;">
-                <label for="ph" style="margin-top:70px;">pH</label>
+            <div class="form-group" style="margin-left:100px; color:#455A64;">
+                <label class="label-input" for="ph" style="margin-top:70px;">pH</label>
                 <div class="hover-text">
-                <input name="ph" id="ph" type="number" style="width:75px; height:30px; border-color:1px solid #455A64; border-radius:5px" required>
-                <span class="tooltip-text top">Integer between  and </span>
+                <input class="field-input" name="ph" id="ph" type="number" step="0.01" required>
+                <span class="tooltip-text top">Decimal between 0.2 and 14</span>
                 </div>
                 <br><br>
-                <label for="Hardness">Hardness</label>
+                <label class="label-input" for="Hardness">Hardness</label>
                 <div class="hover-text">
-                <input name="Hardness" id="Hardness" type="number" style="width:75px; height:30px; border-color:1px solid #455A64; border-radius:5px" required>
-                <span class="tooltip-text top">Integer between  and </span>
+                <input class="field-input" name="Hardness" id="Hardness" type="number" step="0.01" required>
+                <span class="tooltip-text top">Decimal between 73.4 and 317.3</span>
                 </div>
                 <br><br>
-                <label for="Solids">Solids</label>
+                <label class="label-input" for="Solids">Solids</label>
                 <div class="hover-text">
-                <input name="Solids" id="Solids" type="number" style="width:75px; height:30px; border-color:1px solid #455A64; border-radius:5px" required>
-                <span class="tooltip-text top">Integer between  and </span>
+                <input class="field-input" name="Solids" id="Solids" type="number" step="0.01" required>
+                <span class="tooltip-text top">Decimal between 320.9 and 56488.6</span>
                 </div>
                 <br><br>
-                <label for="Chloramines">Chloramines</label>
+                <label class="label-input" for="Chloramines">Chloramines</label>
                 <div class="hover-text">
-                <input name="Chloramines" id="Chloramines" type="number" style="width:75px; height:30px; border: 1px solid #455A64; border-radius:5px" required>
-                <span class="tooltip-text top">Integer between  and </span>
+                <input class="field-input" name="Chloramines" id="Chloramines" type="number" step="0.01" required>
+                <span class="tooltip-text top">Decimal between 1.3 and 13.1</span>
                 </div>
                 <br><br>
-                <label for="Sulphates">Sulphates</label>
+                <label class="label-input" for="Sulfate">Sulphates</label>
                 <div class="hover-text">
-                <input name="Sulphates" id="Sulphates" type="number" style="width:75px; height:30px; border: 1px solid #455A64; border-radius:5px" required>
-                <span class="tooltip-text top">Integer between  and </span>
+                <input class="field-input" name="Sulfate" id="Sulfate" type="number" step="0.01" required>
+                <span class="tooltip-text top">Decimal between 129 and 481</span>
                 </div>
                 <br><br>
-                <label for="Conductivity">Conductivity</label>
+                <label class="label-input" for="Conductivity">Conductivity</label>
                 <div class="hover-text">
-                <input name="Conductivity" id="Conductivity" type="number" style="width:75px; height:30px; border: 1px solid #455A64; border-radius:5px" required>
-                <span class="tooltip-text top">Integer between  and </span>
+                <input class="field-input" name="Conductivity" id="Conductivity" type="number" step="0.01" required>
+                <span class="tooltip-text top">Decimal between 201.6 and 753.3</span>
                 </div>
                 <br><br>
-                <label for="Organic_Carbon">Organic Carbon</label>
+                <label class="label-input" for="Organic_carbon">Organic Carbon</label>
                 <div class="hover-text">
-                <input name="Organic_Carbon" id="Organic_Carbon" type="number" style="width:75px; height:30px; border: 1px solid #455A64; border-radius:5px" required>
-                <span class="tooltip-text top">Integer between  and </span>
+                <input class="field-input" name="Organic_carbon" id="Organic_carbon" type="number" step="0.01" required>
+                <span class="tooltip-text top">Decimal between 2.2 and 27</span>
                 </div>
                 <br><br>
-                <label for="Trihalomethanes">Trihalomethanes</label>
+                <label class="label-input" for="Trihalomethanes">Trihalomethanes</label>
                 <div class="hover-text">
-                <input name="Trihalomethanes" id="Trihalomethanes" type="number" style="width:75px; height:30px; margin-left:53px; border: 1px solid #455A64; border-radius:5px" required>
-                <span class="tooltip-text top">Integer between  and </span>
+                <input class="field-input" name="Trihalomethanes" id="Trihalomethanes" type="number" step="0.01" required>
+                <span class="tooltip-text top">Decimal between 8.5 and 124</span>
                 </div>
                 <br><br>
-                <label for="Turbidity">Turbidity</label>
+                <label class="label-input" for="Turbidity">Turbidity</label>
                 <div class="hover-text">
-                <input name="Turbidity" id="Turbidity" type="number" style="width:75px; height:30px; margin-left:53px; border: 1px solid #455A64; border-radius:5px" required>
-                <span class="tooltip-text top">Integer between  and </span>
+                <input class="field-input" name="Turbidity" id="Turbidity" type="number" step="0.01" required>
+                <span class="tooltip-text top">Decimal between 1.4 and 6.4</span>
                 </div>
-                <br><br><br><br><br>
+                <br><br><br>
+            </div>
 
-                <!-- Display Output -->
+            <!-- Display Output -->
+            <div style="text-align:center;">
                 <label for="Water_Potability">Water Potability</label>
                 <output class="form-control output-block" name="Water_Potability" id="Water_Potability">{{ response }}</output>
-                <br>
-                <button type="submit" class="btn btn-primary mb-2 predict-button">Predict</button>
             </div>
+            <br>
+            <button type="submit" class="btn btn-primary mb-2 predict-button">Predict</button>
         </form>
     </div>
 {% endblock body %}
